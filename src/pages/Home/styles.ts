@@ -225,20 +225,18 @@ export const MarvelIcon = styled(IconMarvel)`
   cursor: pointer;
 `;
 
-export const Spiderman = styled.div`
-  img {
-    width: 130%;
-    transition: 0.7s ease;
-    transform: translate3d(-150px, -50px, 0);
+export const Spiderman = styled.img`
+  width: 130%;
+  transition: 0.7s ease;
+  transform: translate3d(-150px, -50px, 0);
 
-    @media screen and (min-width: 1440px) {
-      transform: translate3d(-190px, -20px, 0);
-      width: 140%;
-    }
+  @media screen and (min-width: 1440px) {
+    transform: translate3d(-190px, -20px, 0);
+    width: 140%;
+  }
 
-    @media screen and (max-width: 960px) {
-      transform: translate3d(0, -20px, 0);
-      width: 100%;
-    }
+  @media screen and (max-width: 960px) {
+    transform: translate3d(0, -20px, 0);
+    width: 100%;
   }
 `;

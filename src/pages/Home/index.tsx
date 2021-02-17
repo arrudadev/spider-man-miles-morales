@@ -1,3 +1,5 @@
+import Tilt from 'react-tilt';
+
 import SpidermanMilesMorales from '../../assets/spider-man.png';
 import SpidermanLogo from '../../assets/spiderman-text.png';
 import BackgroundVideo from '../../components/BackgroundVideo';
@@ -50,9 +52,12 @@ function Home() {
         </WrapperContent>
 
         <WrapperImage>
-          <Spiderman>
-            <img src={SpidermanMilesMorales} alt="Spider-Man Miles Morales" />
-          </Spiderman>
+          <Tilt options={{ scale: 1, perspective: 2200 }}>
+            <Spiderman
+              src={SpidermanMilesMorales}
+              alt="Spider-Man Miles Morales"
+            />
+          </Tilt>
         </WrapperImage>
       </Container>
     </>
