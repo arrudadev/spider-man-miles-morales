@@ -2,6 +2,7 @@ import Tilt from 'react-tilt';
 
 import SpidermanMilesMorales from '../../assets/spider-man.png';
 import SpidermanLogo from '../../assets/spiderman-text.png';
+import BackgroundLines from '../../components/BackgroundLines';
 import BackgroundVideo from '../../components/BackgroundVideo';
 import Header from '../../components/Header';
 import {
@@ -23,7 +24,10 @@ function Home() {
   return (
     <>
       <Header />
+
       <BackgroundVideo />
+
+      <BackgroundLines />
 
       <Container>
         <WrapperContent>
