@@ -1,9 +1,13 @@
 import SpidermanVideo from '../../videos/spiderman.mp4';
 import { Section, Video } from './styles';
 
-function BackgroundVideo() {
+interface BackgroundVideoProps {
+  ref: (element: HTMLDivElement) => any;
+}
+
+function BackgroundVideo({ ref }: BackgroundVideoProps) {
   return (
-    <Section>
+    <Section ref={ref}>
       <Video autoPlay muted loop>
         <source src={SpidermanVideo} type="video/mp4" />
       </Video>

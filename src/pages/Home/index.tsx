@@ -1,3 +1,5 @@
+import { forwardRef } from 'react';
+import { Timeline, Tween } from 'react-gsap';
 import Tilt from 'react-tilt';
 
 import SpidermanMilesMorales from '../../assets/spider-man.png';
@@ -21,41 +23,54 @@ import {
 } from './styles';
 
 function Home() {
-  return (
+  const TargetWithNames = forwardRef((props, targets: any) => (
     <>
-      <Header />
+      <Header
+        navListRef={div => targets.set('navList', div)}
+        navSocialRef={div => targets.set('navSocial', div)}
+      />
 
-      <BackgroundVideo />
+      <BackgroundVideo ref={div => targets.set('backgroundVideo', div)} />
 
       <BackgroundLines />
 
       <Container>
         <WrapperContent>
-          <Logo>
+          <Logo ref={(div: HTMLDivElement) => targets.set('logo', div)}>
             <img src={SpidermanLogo} alt="Spider-Man Miles Morales" />
           </Logo>
 
-          <Description>
+          <Description
+            ref={(div: HTMLDivElement) => targets.set('description', div)}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis
             velit magna vitae mauris orci fames posuere nibh. Sit tellus amet
             facilisi sit odio pulvinar scelerisque quam et. Ultrices facilisis
             nunc massa diam, quis mi imperdiet.
           </Description>
 
-          <WrapperButtons>
+          <WrapperButtons
+            ref={(div: HTMLDivElement) => targets.set('wrapperButtons', div)}
+          >
             <PreOrderButton>Pre-order now</PreOrderButton>
 
             <WatchTeaserButton>Watch the teaser</WatchTeaserButton>
           </WrapperButtons>
 
-          <WrapperPlaystationMarvel>
+          <WrapperPlaystationMarvel
+            ref={(div: HTMLDivElement) => {
+              return targets.set('wrapperPlaystationMarvel', div);
+            }}
+          >
             <PlaystationIcon />
 
             <MarvelIcon />
           </WrapperPlaystationMarvel>
         </WrapperContent>
 
-        <WrapperImage>
+        <WrapperImage
+          ref={(div: HTMLDivElement) => targets.set('wrapperImage', div)}
+        >
           <Tilt options={{ scale: 1, perspective: 2200 }}>
             <Spiderman
               src={SpidermanMilesMorales}
@@ -65,6 +80,73 @@ function Home() {
         </WrapperImage>
       </Container>
     </>
+  ));
+
+  return (
+    <Timeline target={<TargetWithNames />}>
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="navList"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="navSocial"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="logo"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="description"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="wrapperButtons"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="wrapperPlaystationMarvel"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+
+      <Tween
+        from={{ y: 50, opacity: 0 }}
+        to={{ y: 0, opacity: 1 }}
+        duration={0.7}
+        target="wrapperImage"
+        position="-=0.5"
+        ease="back.easeOut.config(1.7)"
+      />
+    </Timeline>
   );
 }
 
