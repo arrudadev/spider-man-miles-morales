@@ -1,12 +1,14 @@
-import { forwardRef } from 'react';
-import { Timeline, Tween } from 'react-gsap';
+import { useEffect } from 'react';
 import Tilt from 'react-tilt';
+
+import { TimelineMax } from 'gsap';
 
 import SpidermanMilesMorales from '../../assets/spider-man.png';
 import SpidermanLogo from '../../assets/spiderman-text.png';
 import BackgroundLines from '../../components/BackgroundLines';
 import BackgroundVideo from '../../components/BackgroundVideo';
 import Header from '../../components/Header';
+import Loading from '../../components/Loading';
 import {
   Container,
   WrapperContent,
@@ -23,54 +25,133 @@ import {
 } from './styles';
 
 function Home() {
-  const TargetWithNames = forwardRef((props, targets: any) => (
-    <>
-      <Header
-        navListRef={div => targets.set('navList', div)}
-        navSocialRef={div => targets.set('navSocial', div)}
-      />
+  useEffect(() => {
+    const timeline = new TimelineMax();
 
-      <BackgroundVideo ref={div => targets.set('backgroundVideo', div)} />
+    timeline
+      .fromTo(
+        '.bg-loader',
+        1,
+        { width: '100%' },
+        {
+          width: '0%',
+          delay: 5,
+          ease: 'Expo.easeInOut',
+        },
+      )
+      .fromTo(
+        '.bg-video',
+        2,
+        { width: '0%', opacity: 0 },
+        { width: '100%', opacity: 1, ease: 'Power3.easeInOut' },
+        '-=1',
+      )
+      .fromTo(
+        '.logo',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+      .fromTo(
+        '.nav-list',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+      .fromTo(
+        '.nav-social',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+      .fromTo(
+        '.item-1',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+
+      .fromTo(
+        '.item-2',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+
+      .fromTo(
+        '.item-3',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+
+      .fromTo(
+        '.item-4',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+
+      .fromTo(
+        '.item-5',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+      .fromTo(
+        '.bg-lines',
+        7,
+        { width: '0%', opacity: 0 },
+        { width: '100%', opacity: 1, ease: 'Power3.easeInOut' },
+        '-=5',
+      );
+  }, []);
+
+  return (
+    <>
+      <Loading />
+
+      <Header />
+
+      <BackgroundVideo />
 
       <BackgroundLines />
 
       <Container>
         <WrapperContent>
-          <Logo ref={(div: HTMLDivElement) => targets.set('logo', div)}>
+          <Logo className="item-1">
             <img src={SpidermanLogo} alt="Spider-Man Miles Morales" />
           </Logo>
 
-          <Description
-            ref={(div: HTMLDivElement) => targets.set('description', div)}
-          >
+          <Description className="item-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iaculis
             velit magna vitae mauris orci fames posuere nibh. Sit tellus amet
             facilisi sit odio pulvinar scelerisque quam et. Ultrices facilisis
             nunc massa diam, quis mi imperdiet.
           </Description>
 
-          <WrapperButtons
-            ref={(div: HTMLDivElement) => targets.set('wrapperButtons', div)}
-          >
+          <WrapperButtons className="item-3">
             <PreOrderButton>Pre-order now</PreOrderButton>
 
             <WatchTeaserButton>Watch the teaser</WatchTeaserButton>
           </WrapperButtons>
 
-          <WrapperPlaystationMarvel
-            ref={(div: HTMLDivElement) => {
-              return targets.set('wrapperPlaystationMarvel', div);
-            }}
-          >
+          <WrapperPlaystationMarvel className="item-4">
             <PlaystationIcon />
 
             <MarvelIcon />
           </WrapperPlaystationMarvel>
         </WrapperContent>
 
-        <WrapperImage
-          ref={(div: HTMLDivElement) => targets.set('wrapperImage', div)}
-        >
+        <WrapperImage className="item-5">
           <Tilt options={{ scale: 1, perspective: 2200 }}>
             <Spiderman
               src={SpidermanMilesMorales}
@@ -80,73 +161,6 @@ function Home() {
         </WrapperImage>
       </Container>
     </>
-  ));
-
-  return (
-    <Timeline target={<TargetWithNames />}>
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="navList"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="navSocial"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="logo"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="description"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="wrapperButtons"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="wrapperPlaystationMarvel"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-
-      <Tween
-        from={{ y: 50, opacity: 0 }}
-        to={{ y: 0, opacity: 1 }}
-        duration={0.7}
-        target="wrapperImage"
-        position="-=0.5"
-        ease="back.easeOut.config(1.7)"
-      />
-    </Timeline>
   );
 }
 

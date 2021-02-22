@@ -12,19 +12,14 @@ import {
   YouTubeIcon,
 } from './styles';
 
-interface HeaderProps {
-  navListRef: (element: HTMLDivElement) => any;
-  navSocialRef: (element: HTMLDivElement) => any;
-}
-
-function Header({ navListRef, navSocialRef }: HeaderProps) {
+function Header() {
   return (
     <StyledHeader>
       <Nav>
-        <NavMenu ref={navListRef}>
-          <Logo />
+        <NavMenu>
+          <Logo className="logo" />
 
-          <NavList>
+          <NavList className="nav-list">
             <li>
               <NavLink>Home</NavLink>
             </li>
@@ -40,7 +35,7 @@ function Header({ navListRef, navSocialRef }: HeaderProps) {
           </NavList>
         </NavMenu>
 
-        <NavSocial ref={navSocialRef}>
+        <NavSocial className="nav-social">
           <FacebookIcon />
           <InstagramIcon />
           <TwitterIcon />

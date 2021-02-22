@@ -2,7 +2,7 @@ import { Section, Lines } from './styles';
 
 function BackgroundLines() {
   return (
-    <Section>
+    <Section className="bg-lines">
       <Lines />
     </Section>
   );
