@@ -31,7 +31,6 @@
     "gsap": "^3.6.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-gsap": "^2.2.1",
     "react-scripts": "4.0.2",
     "react-tilt": "^0.1.4",
     "styled-components": "^5.2.1",
