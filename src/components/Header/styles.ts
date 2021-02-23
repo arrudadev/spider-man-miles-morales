@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as IconFacebook } from '../../assets/icon-facebook.svg';
 import { ReactComponent as IconInstagram } from '../../assets/icon-instagram.svg';
@@ -213,5 +213,70 @@ export const BurgerMenu = styled.div`
   &.opened::before {
     transform: rotate(-225deg);
     top: 45%;
+  }
+`;
+
+const openMobileMenu = keyframes`
+  from {
+    opacity: 0;
+    height: 0%;
+  }
+  to{
+    opacity: 1;
+    height: 170px;
+  }
+`;
+
+const closeMobileMenu = keyframes`
+  from {    
+    opacity: 1;
+    height: 170px;
+  }
+  to{
+    opacity: 0;
+    height: 0%;
+  }
+`;
+
+export const NavListMobile = styled.div`
+  list-style: none;
+
+  position: absolute;
+  top: 110px;
+  left: 0;
+
+  z-index: 999;
+
+  background-color: var(--red-dark);
+
+  width: 100%;
+  height: 170px;
+
+  opacity: 0;
+
+  li {
+    margin-left: 24px;
+
+    a {
+      color: var(--white) !important;
+    }
+  }
+
+  &.opened {
+    opacity: 1;
+    transition: 0.7s ease;
+
+    animation: ${openMobileMenu} 0.5s ease;
+  }
+
+  &.closed {
+    opacity: 0;
+    transition: 0.7s ease;
+
+    animation: ${closeMobileMenu} 0.5s ease;
+  }
+
+  @media screen and (min-width: 960px) {
+    opacity: 0 !important;
   }
 `;

@@ -13,6 +13,7 @@ import {
   TwitterIcon,
   YouTubeIcon,
   BurgerMenu,
+  NavListMobile,
 } from './styles';
 
 function Header() {
@@ -55,6 +56,21 @@ function Header() {
           className={`${burgerMenuActive ? 'opened' : 'closed'} burger-menu`}
           onClick={handleMenuToogle}
         />
+
+        <NavListMobile className={`${burgerMenuActive ? 'opened' : 'closed'}`}>
+          <li>
+            <NavLink>Home</NavLink>
+          </li>
+          <li>
+            <NavLink>Story</NavLink>
+          </li>
+          <li>
+            <NavLink>Wallpapers</NavLink>
+          </li>
+          <li>
+            <NavLink>#BeYourself</NavLink>
+          </li>
+        </NavListMobile>
       </Nav>
     </StyledHeader>
   );
