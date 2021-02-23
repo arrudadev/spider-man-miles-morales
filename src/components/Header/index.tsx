@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   StyledHeader,
   Nav,
@@ -10,9 +12,16 @@ import {
   InstagramIcon,
   TwitterIcon,
   YouTubeIcon,
+  BurgerMenu,
 } from './styles';
 
 function Header() {
+  const [burgerMenuActive, setBurgerMenuActive] = useState(false);
+
+  const handleMenuToogle = () => {
+    setBurgerMenuActive(!burgerMenuActive);
+  };
+
   return (
     <StyledHeader>
       <Nav>
@@ -41,6 +50,11 @@ function Header() {
           <TwitterIcon />
           <YouTubeIcon />
         </NavSocial>
+
+        <BurgerMenu
+          className={`${burgerMenuActive ? 'opened' : 'closed'} burger-menu`}
+          onClick={handleMenuToogle}
+        />
       </Nav>
     </StyledHeader>
   );

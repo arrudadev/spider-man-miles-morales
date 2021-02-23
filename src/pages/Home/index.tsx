@@ -68,6 +68,13 @@ function Home() {
         '-=0.5',
       )
       .fromTo(
+        '.burger-menu',
+        0.7,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'Back.easeOut.config(1.7)' },
+        '-=0.5',
+      )
+      .fromTo(
         '.item-1',
         0.7,
         { y: 50, opacity: 0 },

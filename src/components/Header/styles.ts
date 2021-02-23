@@ -156,3 +156,62 @@ export const TwitterIcon = styled(IconTwitter)`
 export const YouTubeIcon = styled(IconYouTube)`
   ${iconCSS}
 `;
+
+export const BurgerMenu = styled.div`
+  width: 40px;
+  height: 40px;
+
+  display: none;
+  position: relative;
+  cursor: pointer;
+
+  margin-right: 12px;
+
+  @media screen and (max-width: 960px) {
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+
+    position: absolute;
+    top: 33%;
+    left: 12%;
+
+    width: 75%;
+    height: 2px;
+    border-radius: 2px;
+
+    background-color: var(--red);
+
+    transition: 1s ease;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+
+    position: absolute;
+    top: 57%;
+    left: 12%;
+
+    width: 75%;
+    height: 2px;
+    border-radius: 2px;
+
+    background-color: var(--red);
+
+    transition: 1s ease;
+  }
+
+  &.opened::after {
+    transform: rotate(225deg);
+    top: 45%;
+  }
+
+  &.opened::before {
+    transform: rotate(-225deg);
+    top: 45%;
+  }
+`;
