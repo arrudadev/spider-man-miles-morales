@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Section } from './styles';
 
 function Loading() {

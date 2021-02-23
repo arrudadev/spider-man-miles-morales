@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Section, Lines } from './styles';
 
 function BackgroundLines() {

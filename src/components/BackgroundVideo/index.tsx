@@ -1,3 +1,5 @@
+import React from 'react';
+
 import SpidermanVideo from '../../videos/spiderman.mp4';
 import { Section, Video } from './styles';
 

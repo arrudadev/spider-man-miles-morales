@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Tilt from 'react-tilt';
 
 import { TimelineMax } from 'gsap';
