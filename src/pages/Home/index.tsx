@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Tilt from 'react-tilt';
 
-import { TimelineMax } from 'gsap';
+import gsap from 'gsap';
 
 import SpidermanMilesMorales from '../../assets/spider-man.png';
 import SpidermanLogo from '../../assets/spiderman-text.png';
@@ -26,7 +26,7 @@ import {
 
 function Home() {
   useEffect(() => {
-    const timeline = new TimelineMax();
+    const timeline = gsap.timeline();
 
     timeline
       .fromTo(
